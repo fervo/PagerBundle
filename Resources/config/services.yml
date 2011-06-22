@@ -1,0 +1,5 @@
+services:
+  twig.extension.smilingplants.pager:
+    class: SmilingPlants\PagerBundle\Twig\Extension\SmilingPlantsPagerExtension
+    tags:
+      - { name: twig.extension }
