@@ -134,7 +134,7 @@ class ClosurePager
    **/
   public function getMaxPerPage()
   {
-    return $this->max_per_page;
+    return $this->per_page;
   }
   
   /**
