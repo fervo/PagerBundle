@@ -76,12 +76,12 @@ class ClosurePager
    **/
   public function getData()
   {
-    if ($this->data != null)
+    if (($this->data instanceof \Traversable) || is_array($this->data))
     {
       return $this->data;
     }
     
-    throw new LogicException("getData cannot be called before setCurrentPage has been called.");
+    throw new \LogicException("getData cannot be called before setCurrentPage has been called.");
   }
   
   /**
