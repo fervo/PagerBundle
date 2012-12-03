@@ -1,0 +1,22 @@
+{
+    "name": "smilingplants/pager-bundle",
+    "type": "symfony-bundle",
+    "description": "A fancy pager for Symfony 2, complete with Twig integration.",
+    "keywords": ["pagination"],
+    "homepage": "https://github.com/smilingplants/PagerBundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Magnus Nordlander",
+            "email": "magnus@smilingplants.com",
+            "homepage": "http://smilingplants.com"
+        }
+    ],
+    "require": {
+        "symfony/symfony": "2.0.x"
+    },
+    "autoload": {
+        "psr-0": { "SmilingPlants\\PagerBundle": "" }
+    },
+    "target-dir": "SmilingPlants/PagerBundle"
+}
