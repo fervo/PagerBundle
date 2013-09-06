@@ -126,6 +126,9 @@ class ClosurePager
    **/
   public function getLastPage()
   {
+    if (0 == $this->per_page) {
+      return 0;
+    }
     return ceil($this->count/$this->per_page);
   }
   
