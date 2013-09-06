@@ -7,7 +7,7 @@ namespace SmilingPlants\PagerBundle\Pager;
  *
  * @author Magnus Nordlander
  */
-class ClosurePager
+class ClosurePager implements PagerInterface
 {
   private $count_callable;
   private $fragment_callable;
