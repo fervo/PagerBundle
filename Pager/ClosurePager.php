@@ -3,7 +3,7 @@
 namespace SmilingPlants\PagerBundle\Pager;
 
 /**
- * 
+ *
  *
  * @author Magnus Nordlander
  */
@@ -13,12 +13,12 @@ class ClosurePager implements PagerInterface
   private $fragment_callable;
   private $per_page;
   private $count;
-  
+
   private $current_page = null;
   private $data = null;
-  
+
   /**
-  * 
+  *
   *
   * @author Magnus Nordlander
   */
@@ -32,14 +32,14 @@ class ClosurePager implements PagerInterface
     {
       throw new \InvalidArgumentException('Second argument must be a callable.');
     }
-    
+
     $this->count_callable = $count_callable;
     $this->fragment_callable = $fragment_callable;
     $this->per_page = $per_page;
-    
+
     $this->count = call_user_func($count_callable);
   }
-  
+
   /**
    * @author Magnus Nordlander
    **/
@@ -58,10 +58,10 @@ class ClosurePager implements PagerInterface
     }
 
     $this->current_page = $page;
-    
+
     $location = $this->getFirstIndice();
     $length = $this->per_page;
-    
+
     $callable = $this->fragment_callable;
     $this->data = call_user_func($callable, $location, $length);
 
@@ -70,7 +70,7 @@ class ClosurePager implements PagerInterface
       throw new \InvalidArgumentException("Fragment callback must return instance of Traversble, or an array.");
     }
   }
-  
+
   /**
    * @author Magnus Nordlander
    **/
@@ -80,10 +80,10 @@ class ClosurePager implements PagerInterface
     {
       return $this->data;
     }
-    
+
     throw new \LogicException("getData cannot be called before setCurrentPage has been called.");
   }
-  
+
   /**
    * @author Magnus Nordlander
    **/
@@ -99,7 +99,7 @@ class ClosurePager implements PagerInterface
   {
     return ($this->getCurrentPage()-1)*$this->per_page;
   }
-  
+
   /**
    * @author Magnus Nordlander
    **/
@@ -107,20 +107,20 @@ class ClosurePager implements PagerInterface
   {
     return 1;
   }
-  
+
   /**
    * @author Magnus Nordlander
    **/
   public function getLastIndice()
   {
     $first_indice = $this->getFirstIndice();
-    if (($nominal_last_indice = $first_indice+($this->per_page-1)) > $this->count())
+    if (($nominal_last_indice = $first_indice+($this->per_page-1)) >= $this->count())
     {
       return $this->count() - 1;
     }
     return $nominal_last_indice;
   }
-  
+
   /**
    * @author Magnus Nordlander
    **/
@@ -128,7 +128,7 @@ class ClosurePager implements PagerInterface
   {
     return ceil($this->count/$this->per_page);
   }
-  
+
   /**
    * @author Magnus Nordlander
    **/
@@ -136,7 +136,7 @@ class ClosurePager implements PagerInterface
   {
     return $this->per_page;
   }
-  
+
   /**
    * @author Magnus Nordlander
    **/
@@ -144,7 +144,7 @@ class ClosurePager implements PagerInterface
   {
     return $this->getCurrentPage() == $this->getFirstPage();
   }
-  
+
   /**
    * @author Magnus Nordlander
    **/
@@ -152,7 +152,7 @@ class ClosurePager implements PagerInterface
   {
     return $this->getCurrentPage() == $this->getLastPage();
   }
-  
+
   /**
    * @author Magnus Nordlander
    **/
@@ -160,7 +160,7 @@ class ClosurePager implements PagerInterface
   {
     return $this->count() > $this->per_page;
   }
-  
+
   /**
    * @author Magnus Nordlander
    **/
@@ -168,7 +168,7 @@ class ClosurePager implements PagerInterface
   {
     return $this->isLastPage() ? null : $this->getCurrentPage() + 1;
   }
-  
+
   /**
    * @author Magnus Nordlander
    **/
@@ -176,7 +176,7 @@ class ClosurePager implements PagerInterface
   {
     return $this->isFirstPage() ? null : $this->getCurrentPage() - 1;
   }
-  
+
   /**
    * @author Magnus Nordlander
    **/
